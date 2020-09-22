@@ -18,20 +18,28 @@ int N, M;
 Node** fac;
 
 void reformat(vector<int> cameras) {
-
+    for(int i=0; i<cameras.size()-1; ++i) {
+        
+    }
 }
 
 bool verify(int r, int c) {
-    if(r<N && c<M) {
-
-    }
+    return (r<N && c<M && r>=0 && c>=0);
 }
 
 void child(Node n) {
     if(verify(n.r+1, n.c)) {
-
+        n.add(fac[n.r+1][n.c]);
     }
-
+    if(verify(n.r-1, n.c)) {
+        n.add(fac[n.r-1][n.c]);
+    }
+    if(verify(n.r, n.c-1)) {
+        n.add(fac[n.r][n.c-1]);
+    }
+    if(verify(n.r, n.c+1)) {
+        n.add(fac[n.r][n.c+1]);
+    }
 }
 
 

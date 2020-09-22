@@ -5,7 +5,16 @@ char** city;
 
 int BFS(int r, int c) {
     int maxC=c; int maxR=r;
+    if(city[maxR-1][maxC-1]=='*') {
+        return -1;
+    }
     queue<int> q; bool visited[r][c]; int distance[r][c];
+    for(int i=0; i<r; ++i) {
+        for(int j=0; j<c; ++j) {
+            visited[i][j]=false;
+            distance[i][j]=0;
+        }
+    }
     r=0; c=0;
     visited[r][c]=true;
     distance[r][c]=1;
