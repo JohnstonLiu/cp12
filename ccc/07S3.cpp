@@ -48,6 +48,7 @@ int BFS(Node start, Node check) {
         }
         start=a[v.at(len)];
 
+        //counter++; queue with arrays and delete set
         for(int i=0; i<start.size(); ++i) {
             if(s.count(start.at(i))==0) {
                 s.insert(start.at(i));
