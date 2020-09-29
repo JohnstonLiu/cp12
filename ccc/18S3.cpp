@@ -32,7 +32,7 @@ void reformat(vector<int> cameras) {
             if (fac[j][c].type=='U' || fac[j][c].type=='D' || fac[j][c].type=='R' || fac[j][c].type=='L' || fac[j][c].type=='C') {
                 continue;
             }
-            fac[j][c].set('W');
+            fac[j][c].set('X');
         }
         for(int j=r; j>=0; --j) {
             if(fac[j][c].type=='W'){
@@ -41,99 +41,68 @@ void reformat(vector<int> cameras) {
             if (fac[j][c].type=='U' || fac[j][c].type=='D' || fac[j][c].type=='R' || fac[j][c].type=='L' || fac[j][c].type=='C') {
                 continue;
             }
-            fac[j][c].set('W');
+            fac[j][c].set('X');
         }
         for(int j=c; j<M; ++j) {
             if(fac[r][j].type=='W'){
                 break;
             }
-            if (fac[r][j].type=='U' || fac[r][j].type=='D' || fac[r][j].type=='R' || fac[r][j].type=='L' || fac[j][c].type=='C') {
+            if (fac[r][j].type=='U' || fac[r][j].type=='D' || fac[r][j].type=='R' || fac[r][j].type=='L' || fac[r][j].type=='C') {
                 continue;
             }
-            fac[r][j].set('W');
+            fac[r][j].set('X');
         }
         for(int j=c; j>=0; --j) {
             if(fac[r][j].type=='W'){
                 break;
             }
-            if (fac[r][j].type=='U' || fac[r][j].type=='D' || fac[r][j].type=='R' || fac[r][j].type=='L' || fac[j][c].type=='C') {
+            if (fac[r][j].type=='U' || fac[r][j].type=='D' || fac[r][j].type=='R' || fac[r][j].type=='L' || fac[r][j].type=='C') {
                 continue;
             }
-            fac[r][j].set('W');
+            fac[r][j].set('X');
         }
         fac[r][c].set('W');
     }
+
 }
 
-bool verify(int r, int c) {
-    return (r<N && c<M && r>=0 && c>=0 && fac[r][c].type!='W');
+void verify(int r, int c, int a, int b) {
+    if(r<N && c<M && r>=0 && c>=0 && (fac[r][c].type!='W' && fac[r][c].type!='X')){
+        while(fac[r][c].type!='W') {
+            if(fac[r][c].type=='D') {
+                fac[r][c].set('W');
+                r++;
+            }else if(fac[r][c].type=='R') {
+                fac[r][c].set('W');
+                c++;
+            }else if(fac[r][c].type=='L') {
+                fac[r][c].set('W');
+                c--;
+            }else if(fac[r][c].type=='U'){
+                fac[r][c].set('W');
+                r--;
+            }else {
+                fac[a][b].add(fac[r][c]);
+                break;
+            }
+        }
+    }
 }
 
 void child(Node n) {
+    int c=n.r; int d=n.c;
     int a=n.r+1;
     int b=n.c;
-    if(verify(a, b)) {
-        if(fac[a][b].type=='D') {
-            fac[a][b].set('W');
-            if(verify(a+1, b))fac[n.r][n.c].add(fac[a+1][b]);
-        }else if(fac[a][b].type=='R') {
-            fac[a][b].set('W');
-            if(verify(a, b+1))fac[n.r][n.c].add(fac[a][b+1]);
-        }else if(fac[a][b].type=='L') {
-            fac[a][b].set('W');
-            if(verify(a, b-1))fac[n.r][n.c].add(fac[a][b-1]);
-        }else{
-            fac[n.r][n.c].add(fac[a][b]);
-        }
-    }
+    verify(a, b, c ,d);
     a=n.r-1;
     b=n.c;
-    if(verify(a, b)) {
-        if(fac[a][b].type=='U') {
-            fac[a][b].set('W');
-            if(verify(a-1, b))fac[n.r][n.c].add(fac[a-1][b]);
-        }else if(fac[a][b].type=='R') {
-            fac[a][b].set('W');
-            if(verify(a, b+1))fac[n.r][n.c].add(fac[a][b+1]);
-        }else if(fac[a][b].type=='L') {
-            fac[a][b].set('W');
-            if(verify(a, b-1))fac[n.r][n.c].add(fac[a][b-1]);
-        }else{
-            fac[n.r][n.c].add(fac[a][b]);
-        }
-    }
+    verify(a, b, c ,d);
     a=n.r;
     b=n.c-1;
-    if(verify(a, b)) {
-        if(fac[a][b].type=='D') {
-            fac[a][b].set('W');
-            if(verify(a+1, b))fac[n.r][n.c].add(fac[a+1][b]);
-        }else if(fac[a][b].type=='U') {
-            fac[a][b].set('W');
-            if(verify(a-1, b))fac[n.r][n.c].add(fac[a-1][b]);
-        }else if(fac[a][b].type=='L') {
-            fac[a][b].set('W');
-            if(verify(a, b-1))fac[n.r][n.c].add(fac[a][b-1]);
-        }else{
-            fac[n.r][n.c].add(fac[a][b]);
-        }
-    }
+    verify(a, b, c ,d);
     a=n.r;
     b=n.c+1;
-    if(verify(a, b)) {
-        if(fac[a][b].type=='D') {
-            fac[a][b].set('W');
-            if(verify(a+1, b))fac[n.r][n.c].add(fac[a+1][b]);
-        }else if(fac[a][b].type=='R') {
-            fac[a][b].set('W');
-            if(verify(a, b+1))fac[n.r][n.c].add(fac[a][b+1]);
-        }else if(fac[a][b].type=='U') {
-            fac[a][b].set('W');
-            if(verify(a-1, b))fac[n.r][n.c].add(fac[a-1][b]);
-        }else{
-            fac[n.r][n.c].add(fac[a][b]);
-        }
-    }
+    verify(a, b, c ,d);
 }
 int** d;
 
@@ -149,17 +118,18 @@ void BFS(Node start) {
             d[i][j]=0;
         }
     }
-    start.set('W');
+    if(start.type=='W') return;
+    fac[start.r][start.c].set('W');
+    start=fac[start.r][start.c];
     q.push(start);
     while(!q.empty()) {
-        start = q.front();
-        q.pop();
-
+        start = q.front(); q.pop();
         child(start);
         start = fac[start.r][start.c];
         for (Node n : start.children) {
-            fac[n.r][n.c].set('W');
+            n=fac[n.r][n.c];
             d[n.r][n.c] = d[start.r][start.c] + 1;
+            fac[n.r][n.c].set('W');
             q.push(n);
         }
     }
@@ -197,14 +167,24 @@ int main() {
     }
 
     if(!cameras.empty()) reformat(cameras);
+    for(int i=0; i<N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            if(fac[i][j].type=='X')fac[i][j].set('W');
+        }
+    }
+    /*
+    for(int i=0; i<N; ++i) {
+        for (int j = 0; j < M; ++j) {
+            cout << fac[i][j].type;
+        }
+        cout << endl;
+    }
+     */
 
-
-
-
-    //to stop from repeating steps make your previous steps a wall
     BFS(fac[start.first][start.second]);
 
     for(int i=0; i<end.size()-1; i+=2) {
-        cout << d[i][i+1] << endl;
+        if(d[end.at(i)][end.at(i+1)]==0)cout << -1 << "\n";
+        else cout << d[end.at(i)][end.at(i+1)] << endl;
     }
 }
