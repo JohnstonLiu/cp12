@@ -20,10 +20,11 @@ vector<int> find(int n) {
 void BFS() {
     int temp=M, temp1=N;
     queue<int> q; bool visited[1000001];
-    visited[a[]]
+    visited[M*N]=true;
     q.push(M); q.push(N);
     while(!q.empty()) {
-
+        int r=q.front(); q.pop();
+        int c=q.front(); q.pop();
     }
 }
 
