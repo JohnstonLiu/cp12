@@ -2,3 +2,6 @@
 CMakeLists.txt
 cmake-build-debug/
 test.cpp
+*.un~
+*.md~
+*.swp
