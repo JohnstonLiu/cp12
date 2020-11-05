@@ -7,5 +7,5 @@ Problems | Status | Type
 13S3 | Done | Recursion
 16S4 | TLE | Dynamic Programming
 18S3 | Done | Graph Theory
-20S2 | TLE | Graph Theory
+20S2 | WA| Graph Theory
 
