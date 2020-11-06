@@ -2,25 +2,25 @@
 using namespace std;
 int M, N;
 int room[1010][1010];
-vector<int> adj[1000001];
+vector<pair<int, int>> adj[1000010];
 
 void BFS() {
-    queue<int> q;
-    bool visited[1000001];
+    queue<pair<int,int>> q;
+    bool visited[1010][1010];
 
-    q.push(M); q.push(N);
+    q.push(make_pair(M, N));
     while(!q.empty()) {
-        int r=q.front(); q.pop();
-        int c=q.front(); q.pop();
-        if(r==1 && c==1) {
+        pair<int, int> p=q.front(); q.pop();
+        if(p.first==1 && p.second==1) {
             cout << "yes";
             return;
         }
-        if(!visited[r*c]){
-            for(auto u : adj[r*c]) {
-                q.push(u);
+        for(auto u : adj[p.first*p.second]) {
+            if(visited[u.first][u.second]) {
+                continue;
             }
-            visited[r*c]=true;
+            visited[u.first][u.second]=true;
+            q.push(u);
         }
     }
     cout << "no";
@@ -31,9 +31,9 @@ int main() {
     for(int i=1; i<=M; ++i) {
         for(int j=1; j<=N; ++j) {
             cin >> room[i][j];
-            adj[room[i][j]].push_back(i);
-            adj[room[i][j]].push_back(j);
+            adj[room[i][j]].push_back(make_pair(i,j));
         }
     }
     BFS();
+    return 0;
 }
