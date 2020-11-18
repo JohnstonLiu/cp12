@@ -10,7 +10,7 @@ Problems | Status | Type
 # Minimester 2
 Problems | Status | Type
 ---------|--------|-----
-OOS4 | TLE | Dynamic Programming
+00S4 | TLE | Dynamic Programming
 02S4 | WA | Dynamic Programming
 07S4 | Done | Dynamic Programming
 15S1 | Done | Big Brain Implementation
