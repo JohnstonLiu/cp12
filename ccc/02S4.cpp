@@ -1,37 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int M, Q;
+int* nums;
+string* names;
+int maxNum[101][101]={};
+vector<int> sizes;
+
+
+//try graph theory using predeccessor tree
+int foo(int a, int b) {
+    if(a>=Q) {
+        return 0;
+    }
+    int ret=INT_MAX;
+    for(int i=M-1; i>=0; --i) {
+        ret=min(ret, maxNum[a][a+i]+foo(a+i+1, min(b, Q)));
+    }
+    return ret;
+}
+
 int main() {
-    int M, Q;
     cin >> M >> Q;
 
-    int nums[Q];
-    string names[Q];
-
+    nums=new int[Q];
+    names= new string[Q];
     for(int i=0; i<Q; ++i) {
-        //if this doesn't work try out the brute force method
-        //if its divisible you already know M
         cin >> names[i];
-        cin >> nums[i];
+        int num;
+        cin >> num;
+        nums[i]=num;
+        maxNum[i][i]=num;
     }
-    int minSum=INT_MAX;
-    for(int i=-1; i<M-1; ++i) {
-        int section=0;
-        int totalSum=0;
-        for(int j=i+1; j<Q; j+=M) {
-            for(int k=j; k<min(j+M, Q); ++k) {
-                section=max(section, nums[k]);
-            }
-            totalSum+=section;
-            section=0;
+    for(int k=0; k<Q; ++k) {
+        for(int i=0, j=i+1+k; i<Q, j<Q; ++i, ++j) {
+            maxNum[i][j]=max(maxNum[i][j-1], maxNum[i+1][j]);
         }
-
-        int skippedSum=0;
-        for(int j=0; j<=i; ++j) {
-            skippedSum=max(skippedSum, nums[j]);
-        }
-        minSum=min(minSum, totalSum+skippedSum);
     }
 
-    cout << "Total Time: " << minSum << "\n";
+   cout << foo(0, M-1);
+
 }

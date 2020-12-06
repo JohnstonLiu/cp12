@@ -5,3 +5,4 @@ test.cpp
 *.un~
 *.md~
 *.swp
+*.exe
