@@ -51,5 +51,9 @@ int main() {
     int s, e;
     cin >> s >> e;
     dijkstra(s);
-    cout << d[4];
+    for(int i=0; i<2001; ++i) {
+        if(d[i]!=INT_MAX) {
+            cout << i << ": " << d[i] << endl; 
+        }
+    }
 }
