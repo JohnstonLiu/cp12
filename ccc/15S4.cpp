@@ -34,11 +34,13 @@ void dijkstra(int s) {
         for(int i=0; i<adj[u].size(); ++i) {
             //for
             int v=adj[u][i];
+            /*
             if(d[v]>d[u]+weight[u][i] && (h[u]-b[u][v])>0) {
                 h[v]=[u]-b[u][v];
                 d[v]=d[u]+a[u][v];
                 p.push(make_pair(d[v], v));
             }
+            */
         }
     }
 }
