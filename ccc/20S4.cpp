@@ -25,66 +25,72 @@ int main() {
         c[i+1]=cStep;
     }
     //min(a-c, c-a)+min(a-b, b-a)+min(b-c, c-b)
-
+    //a[h]-a[i], a[i] is exclusive a[h] is inclusive
+    //h/j/k-n = excess length to loop around
     int ans=INT_MAX;
     for(int i=0; i<n; ++i) {
         int h=i+aStep;
-        int ab=b[h]-b[i]; int ac=c[h]=c[i]; int ba=a[j]-a[h]; int bc=c[j]=c[h]; int ca=a[k]-a[j]; int cb=b[k]-b[j];
+        int ab=b[h]-b[i]; int ac=c[h]=c[i]; 
         if(h>n) {
-            h-=n;
+            while(h>n) {
+                h-=n;
+            }
             ab=(b[n]-b[i])+(b[h]);
             ac=(c[n]-c[i])+c[h];
         }
         int j=h+bStep;
+        int ba=a[j]-a[h]; int bc=c[j]=c[h]; 
         if(j>n) {
-            j-=n;
-            ba=(a[j]-a[h])+
+            while(j>n) {
+                j-=n;
+            }
+            ba=(a[n]-a[h])+a[j];
+            bc=(c[n]-c[h])+c[j];
         }
         int k=j+cStep;
+        int ca=a[k]-a[j]; int cb=b[k]-b[j];
         if(k>n) {
-            k-=n;
+            while(k>n) {
+                k-=n;
+            }
+            ca=(a[n]-a[j])+a[k];
+            cb=(b[n]-b[j])+b[k];
         }
 
         int an=max(ab+ac, ba+bc)+ca+cb;
         ans=min(ans, an);
     }
     for(int i=0; i<n; ++i) {
-        int an=max((b[i+aStep]-b[i])+(c[i+aStep]-c[i]), ((a[i+aStep+bStep]-a[i+aStep])+c[i+aStep+bStep]-c[i+aStep]));
-    }
-    //max(!a, !b)+!c
-
-
-    /*
-    for(int i=0; i<aStep+bStep+cStep; ++i) {
-        cout << a[i] << " ";
-    }
-    cout << endl;
-    for(int i=0; i<aStep+bStep+cStep; ++i) {
-        cout << b[i] << " ";
-    }
-    cout << endl;
-
-    for(int i=0; i<aStep+bStep+cStep; ++i) {
-        cout << c[i] << " ";
-    }
-    cout << endl;
-    */
-
-    /*
-    for(int i=0; i<n; ++i) {
-        for(int j=i; j<i+aStep; ++j) {
-            a[j]++;
+        int h=i+aStep;
+        int ab=b[h]-b[i]; int ac=c[h]=c[i]; 
+        if(h>n) {
+            while(h>n) {
+                h-=n;
+            }
+            ab=(b[n]-b[i])+(b[h]);
+            ac=(c[n]-c[i])+c[h];
         }
-        for(int j=i; j<i+bStep; ++j) {
-
+        int j=h+cStep;
+        int ca=a[j]-a[h]; int cb=b[j]-b[h]; 
+        if(j>n) {
+            while(j>n) {
+                j-=n;
+            }
+            ca=(a[n]-a[h])+a[j];
+            cb=(b[n]-b[h])+b[j];
         }
-        for(int j=i; j<i+cStep; ++j) {
-
+        int k=j+bStep;
+        int ba=a[k]-a[j]; int bc=c[k]-c[j];
+        if(k>n) {
+            while(k>n) {
+                k-=n;
+            }
+            ba=(a[n]-a[j])+a[k];
+            bc=(c[n]-c[j])+c[k];
         }
+
+        int an=max(ab+ac, ca+cb)+ba+bc;
+        ans=min(ans, an);
     }
-     */
-
-
-    //three arrays for each letter representing how many are in the range from the i starting point
-    //triplet or sth for each index
+    cout << ans;
 }
