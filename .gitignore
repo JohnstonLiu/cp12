@@ -2,6 +2,7 @@
 CMakeLists.txt
 cmake-build-debug/
 test.cpp
+*.cpp~
 *.un~
 *.md~
 .gitignore~
