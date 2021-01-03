@@ -4,5 +4,6 @@ cmake-build-debug/
 test.cpp
 *.un~
 *.md~
+.gitignore~
 *.swp
 *.exe
