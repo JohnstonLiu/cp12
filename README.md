@@ -16,3 +16,8 @@ Problems | Status | Type
 15S1 | Done | Big Brain Implementation
 16S4 | Done | Dynamic Programming
 20S2 | Done | Graph Theory
+
+# Minimester 3
+Problems | Status | Type
+---------|--------|-----
+20S4 | Done | Dynamic Programming
