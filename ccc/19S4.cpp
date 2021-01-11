@@ -12,7 +12,7 @@ int main() {
     int rem=N%K;
     int k[N];
     int r[N];
-    //O(n) implementtion of creating the k and r arrays
+    //O(n) implementation of creating the k and r arrays
     int m=0;
     for(int i=0; i<N; ++i) {
         if(i!=0 && i%K==0) {
