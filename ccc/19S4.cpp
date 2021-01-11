@@ -9,5 +9,15 @@ int main() {
     for(int i=0; i<N; ++i) {
         cin >> a[i];
     }    
-    int r=N%K
+    int rem=N%K;
+    int k[N];
+    int r[N];
+    int m=0;
+    for(int i=0; i<N; ++i) {
+        if(i!=0 && i%K==0) {
+            m=0;
+        }
+        m=max(m, a[i]);
+    }
+
 }
