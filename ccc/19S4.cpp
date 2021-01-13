@@ -1,17 +1,42 @@
 #include <bits/stdc++.h>
+#define ll long long
 using namespace std;
+
+void print(int N, int a[], int k[], int r[]) {
+    for(int i=0; i<N; ++i) {
+        cout << a[i];
+    }
+    cout << endl;
+
+    for(int i=0; i<N; ++i) {
+        if(k[i]==0) {
+            cout << " ";
+        }else {
+            cout << k[i];
+        }
+    }
+    cout << endl;
+
+    for(int i=0; i<N; ++i) {
+        if(r[i]==0) {
+            cout << " ";
+        }else {
+            cout << r[i];
+        }
+    }
+}
 
 int main() {
     int N, K;
     cin >> N >> K;
-    int a[100001]={};
+    int a[1000010]={};
     for(int i=0; i<N; ++i) {
         cin >> a[i];
     }    
     int R=N%K;
 
-    int k[100000]={};
-    int r[100000]={};
+    int k[1000010]={};
+    int r[1000010]={};
 
     int m=0;
     for(int i=0; i<=N; ++i) {
@@ -40,44 +65,22 @@ int main() {
         }
         m=max(m, a[i]);
     }
+    //print(N, a, k, r);
 
-    for(int i=0; i<N; ++i) {
-        cout << a[i];
-    }
-    cout << endl;
-
-    for(int i=0; i<N; ++i) {
-        if(k[i]==0) {
-            cout << " ";
-        }else {
-            cout << k[i];
-        }
-    }
-    cout << endl;
-
-    for(int i=0; i<N; ++i) {
-        if(r[i]==0) {
-            cout << " ";
-        }else {
-            cout << r[i];
-        }
-    }
-
-
-    int sum=0;
+    ll sum=0;
     sum+=r[0];
     for(int i=R; i<N; i+=K) {
         sum+=k[i];
     }
     for(int i=0; i<N-R; i+=K) {
-        int prev=sum;
+        ll prev=sum;
         sum-=r[i];
         sum+=k[i];
         sum-=k[i+R];
         sum+=r[i+K];
         sum=max(sum, prev);
     }
-    int final=0;
+    ll final=0;
     for(int i=0; i<N-R; i+=K) {
         final+=k[i];
     }
