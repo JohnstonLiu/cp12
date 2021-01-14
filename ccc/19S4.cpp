@@ -78,13 +78,13 @@ int main() {
         sum+=k[i];
         sum-=k[i+R];
         sum+=r[i+K];
-        sum=max(sum, prev);
+        sum=min(sum, prev);
     }
     ll final=0;
     for(int i=0; i<N-R; i+=K) {
         final+=k[i];
     }
     final+=r[N-R];
-    sum=max(sum, final);
+    sum=min(sum, final);
     cout << sum;
 }
