@@ -10,8 +10,6 @@ Problems | Status | Type
 # Minimester 2
 Problems | Status | Type
 ---------|--------|-----
-00S4 | TLE | Dynamic Programming
-02S4 | WA | Dynamic Programming
 07S4 | Done | Dynamic Programming
 15S1 | Done | Big Brain Implementation
 16S4 | Done | Dynamic Programming
@@ -21,3 +19,5 @@ Problems | Status | Type
 Problems | Status | Type
 ---------|--------|-----
 20S4 | Done | Dynamic Programming
+01S3 | Done | Graph Theory
+00S4 | Done | Dynamic Programming
