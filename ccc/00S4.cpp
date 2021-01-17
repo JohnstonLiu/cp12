@@ -2,35 +2,24 @@
 using namespace std;
 
 int len;
-int clubs[32];
-bool dp(int i, int strokes, int d) {
-    if(d==0) {
-        cout << "Roberta wins in " << strokes << " strokes.";
-        return true;
+int coins[32];
+int solve(int x) {
+    if(x<0)return INFINITY;
+    if(x==0)return 0;
+    int best=INFINITY;
+    for(int i=0; i<len; ++i) {
+        best=min(best, solve(x-coins[i])+1);
     }
-    if(i==len) {
-        return false;
-    }
-
-    int r=d/clubs[i];
-    for(int j=0; j<r; ++j) {
-        if(dp(i+1, strokes+(r-j), d-(clubs[i]*(r-j)))) {
-            return true;
-        }
-    }
-    return dp(i+1, strokes, d);
+    return best;
 }
 
-
 int main() {
-    int d;
-    cin >> d;
+    int x;
+    cin >> x;
     cin >> len;
     for(int i=0; i<len; ++i) {
-        cin >> clubs[i];
+        cin >> coins[i];
     }
-    sort(clubs, clubs+len, greater<>());
-    if(!dp(0,0,d)) {
-        cout << "Roberta acknowledges defeat.";
-    }
+    sort(coins, coins+len);
+    cout << solve(x);
 }
