@@ -8,18 +8,21 @@ typedef pair<int, int> pi;
 int A=31; int B=INF;
 int* h;
 int* p;
-ll hsh(string str) {
-    int n=str.length();
+void hsh(string str) {
     ll hash=0;
-    ll pp=0;
+    int n=str.length();
     for(int i=0; i<n; ++i) {
-        int x=pow(A, n-1-i);
-        hash+=str[i]*x;
-        pp+=x;
-        h[i]=hash;
-        p[i]=pp;
+        ll pw=pow(A, n-i-1);
+        h[i+1]=(hash+=str[i]*pw)%B;
+        p[i+1]=pw%B;
     }
-    return hash;
+}
+
+int id(int a, int b) {
+   if(a==0) {
+       return h[b];
+   } 
+   return(h[b]-h[a-1]*p[b-a+1])%B;
 }
 
 bool check(int a[], int b[]) {
@@ -45,29 +48,32 @@ int main() {
     for(char c : needle) {
         ++dp[c-97];
     }
-    int n=needle.length();
-    int h=haystack.length();
+    int l1=needle.length();
+    int l2=haystack.length();
+    h=new int[l2+1];
+    p=new int[l2+1];
 
-    if(n>h){
+    if(l1>l2){
         cout << 0;
         return 0;
     }
 
-    for(int i=0; i<n; ++i) {
+    for(int i=0; i<l1; ++i) {
         foo[haystack[i]-97]++;
     }
     hsh(haystack);
     if(check(dp, foo)){
         ans++;
-        string temp=haystack.substr(0, n);
-        map[hash]=true;
+        string temp=haystack.substr(0, l1);
+        map[id(0, l1-1)]=true;
     }
-    for(int i=0; i<h-n; ++i) {
+    for(int i=0; i<l2-l1; ++i) {
         foo[haystack[i]-97]--;
-        foo[haystack[i+n]-97]++;
+        foo[haystack[i+l1]-97]++;
         if(check(dp, foo)){
-            string str=haystack.substr(i+1, n);
-            if(!map[hash]) {
+            string str=haystack.substr(i+1, l1);
+            int hash=id(i+1, i+l1);
+            if(!map[hash]){
                 ans++;
                 map[hash]=true;
             }
