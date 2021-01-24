@@ -1,50 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef vector<int> vi;
-typedef pair<int, int> pi;
 #define INF 1000000007
-#define PB push_back
-#define MP make_pair
 
-vi g[2001];
+struct path{
+    int weight;
+    int dmg;
+    int end;
+    path(int e, int w, int d) {
+        weight=w;
+        dmg=d;
+        end=e;
+    }
+};
+
+vector<path> graph[2001];
 int d[2001];
-int weight[2001][2001]={};
-int dmg[2001][2001]={};
-void djks(int s) {
-    for(int i=1; i<2001; ++i)d[i]=INF;
-    priority_queue<pi> q;
+void djks(int A) {
+    for(int i=1; i<=2000; ++i)d[i]=INF;
+    d[A]=0;
     bool visited[2001]={};
-    d[s]=0;
-    q.push({0, s});
+    priority_queue<pair<int, int>> q;
+    q.push({0, A});
     while(!q.empty()) {
         int a=q.top().second; q.pop();
         if(visited[a])continue;
         visited[a]=true;
-        for(auto b : g[a]) {
-            int w=weight[a][b];
-            if(d[a]+w<d[b]) {
+        for(auto u : graph[a]) {
+            int b=u.end; int h=u.dmg; int w=u.weight;
+            if(d[a]+w<d[b] && ) {
                 d[b]=d[a]+w;
                 q.push({-d[b], b});
             }
         }
     }
-
-
 }
 
+
 int main() {
-    int hull, N, M;
-    cin >> hull >> N >> M;
+    int K, N, M;
+    cin >> K >> N >> M;
     for(int i=0; i<M; ++i) {
         int a, b, t, h;
         cin >> a >> b >> t >> h;
-        g[a].PB(b);   
-        g[b].PB(a);
-        weight[a][b]=t;
-        weight[b][a]=t;
-        dmg[a][b]=h;
-        dmg[b][a]=h;
+        graph[a].emplace_back(path(b, t, h));
+        graph[b].emplace_back(path(a, t, h));
     }
     int A, B;
     cin >> A >> B;
