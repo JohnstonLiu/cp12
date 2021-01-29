@@ -2,52 +2,64 @@
 using namespace std;
 typedef long long ll;
 #define INF 1000000007
-
-struct path{
+struct node {
     int weight;
+    int num;
     int dmg;
-    int end;
-    path(int e, int w, int d) {
+    node(int n, int w, int d) {
         weight=w;
+        num=n;
         dmg=d;
-        end=e;
     }
 };
 
-vector<path> graph[2001];
-int d[2001];
-void djks(int A) {
-    for(int i=1; i<=2000; ++i)d[i]=INF;
-    d[A]=0;
-    bool visited[2001]={};
+int K, N;
+int dist[2001][201];
+vector<node> adj[2001];
+void djks(int s) {
+    bool processed[2001]={};
+    for(int i=0; i<=N; ++i)
+        for(int j=1; j<=201; ++j)
+            dist[i][j]=INF;
+
+    dist[s][0]=0;
     priority_queue<pair<int, int>> q;
-    q.push({0, A});
+    q.push({0, s});
+    processed[s]=true;
     while(!q.empty()) {
         int a=q.top().second; q.pop();
-        if(visited[a])continue;
-        visited[a]=true;
-        for(auto u : graph[a]) {
-            int b=u.end; int h=u.dmg; int w=u.weight;
-            if(d[a]+w<d[b] && ) {
-                d[b]=d[a]+w;
-                q.push({-d[b], b});
+        processed[a]=false;
+        for(auto u : adj[a]) {
+            int b=u.num; int w=u.weight; int h=u.dmg;
+            for(int j=0; j+h<K; ++j) {
+                if(dist[a][j]+w<dist[b][j+h]) {
+                    dist[b][j+h]=dist[a][j]+w;
+                    if(!processed[b]) {
+                        processed[b]=true;
+                        q.push({-dist[b][j+h], b});
+                    }
+
+                }
             }
         }
     }
+
 }
 
-
 int main() {
-    int K, N, M;
+    int M;
     cin >> K >> N >> M;
     for(int i=0; i<M; ++i) {
         int a, b, t, h;
         cin >> a >> b >> t >> h;
-        graph[a].emplace_back(path(b, t, h));
-        graph[b].emplace_back(path(a, t, h));
+        adj[a].push_back(node(b, t, h));
+        adj[b].push_back(node(a, t, h));
     }
     int A, B;
     cin >> A >> B;
     djks(A);
-    cout << d[B];
+    int ans=INF;
+    for(int i=0; i<201; ++i)ans=min(ans, dist[B][i]);
+    if(ans==INF)cout << -1;
+    else cout << ans;
 }
