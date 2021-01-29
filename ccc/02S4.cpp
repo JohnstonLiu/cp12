@@ -18,5 +18,6 @@ int main() {
         a[i]=n;
         names[i]=str;
     }
+    //greedy alg to solve this
 
 }
