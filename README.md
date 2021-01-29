@@ -24,3 +24,5 @@ Problems | Status | Type
 20S3 | Done | String Algorithms (f*** hashing)
 11S3 | Done | Recursion
 15S4 | Done | Graph Theory
+
+Furthermore, I devloped a python script that automated some of the tedious tasks that I have to do on an everday basis.
