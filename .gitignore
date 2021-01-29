@@ -8,3 +8,4 @@ test.cpp
 .gitignore~
 *.swp
 *.exe
+chromedriver.exe
