@@ -31,4 +31,4 @@ Furthermore, I devloped a python script that automated some of the tedious tasks
 Problems | Status | Type
 ---------|------- |-----
 04S3 | Done | Graph Theory
-2101S1 | Done | Graph Theory
+2101S1 | Done | Big Brain Graph Theory
