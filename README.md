@@ -21,7 +21,7 @@ Problems | Status | Type
 20S4 | Done | Dynamic Programming
 01S3 | Done | Graph Theory
 00S4 | Done | Dynamic Programming
-20S3 | Done | String Algorithms (f*** hashing)
+20S3 | Done | String Algorithms
 11S3 | Done | Recursion
 15S4 | Done | Graph Theory
 
