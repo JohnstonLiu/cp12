@@ -26,3 +26,9 @@ Problems | Status | Type
 15S4 | Done | Graph Theory
 
 Furthermore, I devloped a python script that automated some of the tedious tasks that I have to do on an everday basis.
+
+# Minimester 4
+Problems | Status | Type
+---------|------- |-----
+04S3 | Done | Graph Theory
+2101S1 | Done | Graph Theory
