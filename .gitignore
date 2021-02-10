@@ -2,6 +2,7 @@
 CMakeLists.txt
 cmake-build-debug/
 test.cpp
+test1.cpp
 *.cpp~
 *.un~
 *.md~
