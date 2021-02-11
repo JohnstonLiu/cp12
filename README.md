@@ -33,3 +33,4 @@ Problems | Status | Type
 04S3 | Done | Graph Theory
 2101S1 | Done | Big Brain Graph Theory
 20S2 | Revisited with DFS | Graph Theory
+02S4 | Done | Dynamic Programming
