@@ -21,8 +21,16 @@ Problems | Status | Type
 20S4 | Done | Dynamic Programming
 01S3 | Done | Graph Theory
 00S4 | Done | Dynamic Programming
-20S3 | Done | String Algorithms (f*** hashing)
+20S3 | Done | String Algorithms
 11S3 | Done | Recursion
 15S4 | Done | Graph Theory
 
 Furthermore, I devloped a python script that automated some of the tedious tasks that I have to do on an everday basis.
+
+# Minimester 4
+Problems | Status | Type
+---------|------- |-----
+04S3 | Done | Graph Theory
+2101S1 | Done | Big Brain Graph Theory
+20S2 | Revisited with DFS | Graph Theory
+02S4 | Done | Dynamic Programming

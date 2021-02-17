@@ -1,11 +1,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef vector<int> vi;
-typedef pair<int, int> pi;
 #define INF 1000000009
-#define PB push_back
-#define MP make_pair
+struct node {
+    int prev;
+    int x;
+    node(int n,int b) {
+        prev=b;
+        x=n;
+    }
+};
+
 
 int main() {
     int M, Q;
@@ -19,19 +24,28 @@ int main() {
         names[i]=str;
     }
     //int groups=Q/M+(Q%M!=0);
-    int best[Q+1];
-    best[0]=0;
-    for(int i=1; i<=Q; ++i)best[i]=INF;
+    node* best[Q+1];
+    best[0]=new node(0, -1);
+    for(int i=1; i<=Q; ++i)best[i]=new node(INF, -1);
     int m=-INF;
-
     for(int i=1; i<=Q; ++i) {
-        for(int j=i; j<i+M; ++j) {
+        for(int j=i; j<i+M && j<=Q; ++j) {
             m=max(m, a[j]);
-            best[j]=min(best[j], best[i-1]+m);
+            if(best[i-1]->x+m<best[j]->x) {
+                best[j]->x=best[i-1]->x+m;
+                best[j]->prev=i-1;
+            }
         }
         m=-INF;
     }
-    //for(int i=1; i<=Q; ++i)cout << best[i] <<  " ";
-    //cout << endl;
-    cout << "Total Time: " << best[Q] << "\n";
+    cout << "Total Time: " << best[Q]->x << "\n";
+    int s=best[Q]->prev;
+    while(s>0) {
+        names[s]+='\n';
+        s=best[s]->prev;
+    }
+    for(int i=1; i<=Q; ++i) {
+        if(names[i].back()=='\n')cout << names[i];
+        else cout << names[i]+" ";
+    }
 }
