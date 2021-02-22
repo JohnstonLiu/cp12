@@ -1,36 +1,28 @@
-# cp12
-# Minimester 1
-Problems | Status | Type
----------|--------|-----
-07S3 | Done | Graph Theory
-08S3 | Done | Graph Theory
-13S3 | Done | Recursion
-18S3 | Done | Graph Theory
-
-# Minimester 2
-Problems | Status | Type
----------|--------|-----
-07S4 | Done | Dynamic Programming
-15S1 | Done | Big Brain Implementation
-16S4 | Done | Dynamic Programming
-20S2 | Done | Graph Theory
-
-# Minimester 3
-Problems | Status | Type
----------|--------|-----
-20S4 | Done | Dynamic Programming
-01S3 | Done | Graph Theory
-00S4 | Done | Dynamic Programming
-20S3 | Done | String Algorithms
-11S3 | Done | Recursion
-15S4 | Done | Graph Theory
-
-Furthermore, I devloped a python script that automated some of the tedious tasks that I have to do on an everday basis.
-
-# Minimester 4
+# USACO Problems
 Problems | Status | Type
 ---------|------- |-----
-04S3 | Done | Graph Theory
-2101S1 | Done | Big Brain Graph Theory
-20S2 | Revisited with DFS | Graph Theory
+20 Dec B3 | Done | Implementation/Sorting
+21 Jan S1 | Done | Implementation/Graph Theory
+
+# CCC Problems
+Problems | Status | Type
+---------|------- |-----
+00S4 | Done | Dynamic Programming
+01S3 | Done | Graph Theory
 02S4 | Done | Dynamic Programming
+04S3 | Done | Graph Theory
+07S3 | Done | Graph Theory
+07S4 | Done | Dynamic Programming
+08S3 | Done | Graph Theory
+11S3 | Done | Recursion
+13S3 | Done | Recursion
+15S1 | Done | Implementation
+15S4 | Done | Graph Theory
+16S3 | Done | Graph Theory
+16S4 | Done | Dynamic Programming
+17S3 | Done | Simple Math
+18S3 | Done | Graph Theory
+20S2 | Done | Graph Theory
+20S2 | Revisited with DFS | Graph Theory
+20S3 | Done | String Algorithms
+20S4 | Done | Dynamic Programming
