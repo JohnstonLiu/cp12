@@ -8,6 +8,7 @@ Present | Training hard for USACO and next CCC
 # USACO Problems
 Problems | Status | Type
 ---------|------- |-----
+20 Feb B3 | Done | Implementation
 20 Dec B3 | Done | Implementation/Sorting
 21 Jan S1 | Done | Implementation/Graph Theory
 
