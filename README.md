@@ -1,3 +1,10 @@
+# Project Timeline
+Date | Event
+---------|-------
+Feb 17 2021 | Fail miserably at CCC
+Present | Training hard for USACO and next CCC
+2022 | Unleash my revenge on the CCC
+
 # USACO Problems
 Problems | Status | Type
 ---------|------- |-----
