@@ -23,7 +23,9 @@ Problems | Status | Type
 07S3 | Done | Graph Theory
 07S4 | Done | Dynamic Programming
 08S3 | Done | Graph Theory
+10S2 | Done | String Algorithms
 11S3 | Done | Recursion
+13S2 | Done | Simple Math
 13S3 | Done | Recursion
 15S1 | Done | Implementation
 15S4 | Done | Graph Theory
