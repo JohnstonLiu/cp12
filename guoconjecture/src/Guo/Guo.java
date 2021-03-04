@@ -23,7 +23,7 @@ public class Guo extends JDialog {
     }
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        int[] primes={1, 3, 5, 7, 9, 11, 13, 17, 19};
+        int[] primes={1, 3, 5, 7, 9, 11, 13, 17, 19, 23, 25, 27, 29, 31, 33, 37, 41, 43, 47};
         for(int i=0; i<primes.length; ++i) {
             for(int j=i; j<primes.length; ++j) {
                 new Guo(primes[i]*100, primes[j]*100);
