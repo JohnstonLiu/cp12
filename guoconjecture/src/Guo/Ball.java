@@ -34,7 +34,7 @@ class Ball {
         ypos = y;
         width = w;
         height = h;
-        speed = 5;
+        speed = 10;
         xdir = 1;
         ydir = -1;
 

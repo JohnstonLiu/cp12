@@ -28,7 +28,7 @@ class Board extends JPanel{
          leftWall = new Wall (0,0,1,y);
          rightWall = new Wall (x,0,1,y);
          bottomWall = new Wall (0,y,x,1);
-         ball = new Ball(0,y,10, 10);
+         ball = new Ball(0,y,1, 1);
         setFocusable(true);
         ActionListener s = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -52,10 +52,9 @@ class Board extends JPanel{
                     frame.dispose();
                 }
                 if(ball.intersects(0,y,1,1)){
-                    ball.stop();
-                    System.out.println("Bottom left: "+a+", "+b);
-                    frame.dispose();
-
+//                    ball.stop();
+//                    System.out.println("Bottom left: "+a+", "+b);
+//                    frame.dispose();
                 }
                 if(ball.intersects(x,0,1,1)){
                     ball.stop();
