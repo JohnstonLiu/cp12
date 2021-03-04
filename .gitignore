@@ -1,5 +1,7 @@
 .idea/
 CMakeLists.txt
+out/production/
+out/
 cmake-build-debug/
 test.cpp
 test1.cpp
@@ -7,6 +9,7 @@ test1.cpp
 *.un~
 *.md~
 .gitignore~
+*.iml
 *.swp
 *.exe
 chromedriver.exe
