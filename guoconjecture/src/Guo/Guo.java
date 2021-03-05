@@ -15,17 +15,16 @@ public class Guo extends JDialog {
         board = new Board(a, b, this);
         add(board);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(1000, 1000);
+        setSize(1000, 1100);
         setLocationRelativeTo(null);
         setVisible(true);
         dispose();
         setVisible(false);
     }
     public static void main(String[] args) {
-        Scanner sc=new Scanner(System.in);
-        int[] primes={1, 3, 5, 7, 9, 11, 13, 17, 19, 23, 25, 27, 29, 31, 33, 37, 41, 43, 47};
+        int[] primes={7, 9};
         for(int i=0; i<primes.length; ++i) {
-            for(int j=i; j<primes.length; ++j) {
+            for(int j=i+1; j<primes.length; ++j) {
                 new Guo(primes[i]*100, primes[j]*100);
             }
         }

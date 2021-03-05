@@ -29,16 +29,13 @@ class Ball {
     public int xpos, ypos, width, height, speed, xdir, ydir;
 
     public Ball(int x, int y, int w, int h){
-
         xpos = x;
         ypos = y;
         width = w;
         height = h;
-        speed = 10;
+        speed = 5;
         xdir = 1;
         ydir = -1;
-
-
         r = new Ellipse2D.Double(xpos, ypos, width, height);
     }
 

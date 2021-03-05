@@ -17,6 +17,7 @@ class Board extends JPanel{
     Wall rightWall;
     Wall bottomWall;
     Ball ball;
+    int bounces=0;
     int score1;
     int score2;
     int count1;
@@ -28,7 +29,7 @@ class Board extends JPanel{
          leftWall = new Wall (0,0,1,y);
          rightWall = new Wall (x,0,1,y);
          bottomWall = new Wall (0,y,x,1);
-         ball = new Ball(0,y,1, 1);
+         ball = new Ball(0,y,12, 12);
         setFocusable(true);
         ActionListener s = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -36,35 +37,38 @@ class Board extends JPanel{
                 //more game code will go here
                 if (ball.intersects(topWall.getX(), topWall.getY(), topWall.getW(), topWall.getH())) {
                     ball.changeYdir(1);
+                    bounces++;
                 }
                 if (ball.intersects(bottomWall.getX(), bottomWall.getY(), bottomWall.getW(), bottomWall.getH())) {
                     ball.changeYdir(-1);
+                    bounces++;
                 }
                 if (ball.intersects(leftWall.getX(), leftWall.getY(), leftWall.getW(), leftWall.getH())) {
                     ball.changeXdir(1);
+                    bounces++;
                 }
                 if (ball.intersects(rightWall.getX(), rightWall.getY(), rightWall.getW(), rightWall.getH())) {
                     ball.changeXdir(-1);
+                    bounces++;
                 }
                 if(ball.intersects(0,0,1,1)){
                     ball.stop();
                     System.out.println("Top left: "+a+", "+b);
+                    System.out.println("Bounces: " + ((bounces/3)-2));
                     frame.dispose();
                 }
-                if(ball.intersects(0,y,1,1)){
-//                    ball.stop();
-//                    System.out.println("Bottom left: "+a+", "+b);
-//                    frame.dispose();
-                }
-                if(ball.intersects(x,0,1,1)){
+
+                if(ball.intersects(x-1,0,1,1)){
                     ball.stop();
                     System.out.println("Top right: "+a+", "+b);
+                    System.out.println("Bounces: " + ((bounces/3)-2));
                     frame.dispose();
 
                 }
-                if(ball.intersects(x,y,1,1)){
+                if(ball.intersects(x-1,y-1,1,1)){
                     ball.stop();
                     System.out.println("Bottom right: "+a+", "+b);
+                    System.out.println("Bounces: " + ((bounces/3)-2));
                     frame.dispose();
                 }
                 repaint();
