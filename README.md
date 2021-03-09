@@ -8,10 +8,25 @@ Present | Training hard for USACO and next CCC
 # USACO Problems
 Problems | Status | Type
 ---------|------- |-----
+15 Dec B1 | Done | Math
+16 Jan B1 | Done | Math
+16 Dec B1 | Done | Math
+17 Dec B1 | Done | Math
+18 Jan B1 | Done | Math
+18 Feb B1 | Done | Math
+19 Open B1 | Done | Implementation
 20 Feb B3 | Done | Implementation
+20 Jan B1 | Done | Implementation
+20 Jan B2 | Done | Implementation
+20 Dec B1 | Done | Sorting
 20 Dec B2 | Done | Implementation
 20 Dec B3 | Done | Implementation/Sorting
 21 Jan S1 | Done | Implementation/Graph Theory
+
+# Codeforces Problems
+Problems | Status | Type
+---------|--------|-----
+1216C | Solving | Math
 
 # CCC Problems
 Problems | Status | Type
